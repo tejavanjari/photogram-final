@@ -1,0 +1,56 @@
+<div>
+  <div>
+    <h1>
+      List of all users
+    </h1>
+  </div>
+</div>
+
+<hr>
+ <%# conditional follow/unfollow button (if signed in)%>
+
+  <%# conditional Request Sent & Cancel button (if signed in & request sent)%>
+
+ 
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          Username
+        </th>
+
+        <th>
+          Private?
+        </th>
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_users.each do |a_user| %>
+      <tr>
+        <td>
+          <%= a_user.username %>
+        </td>
+
+        <td>
+          <% if a_user.private%>
+          Yes
+          <% else %>
+          No
+          <% end %>
+        </td>
+        <%# conditional on login - show details%>
+        <td>
+          <a href="/users/<%= a_user.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
