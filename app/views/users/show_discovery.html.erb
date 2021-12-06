@@ -1,0 +1,73 @@
+<div>
+  <div>
+    <h1>
+      Discovery
+    </h1>
+  </div>
+</div>
+
+<div>
+  <div>
+    <table border="1">
+  <tr>
+    <th>
+      Image
+    </th>
+
+    <th>
+      Owner
+    </th>
+
+    <th>
+      Caption
+    </th>
+
+    <th>
+      Posted
+    </th>
+
+    <th>
+      Likes
+    </th>
+
+    <th></th>
+  </tr>
+      
+      <% # for each following
+      @followings.each do |following| 
+      # get user
+      following_user = User.where({:id => following.recipient_id}).at(0)
+      likes = following_user.likes
+      likes.each do |like|photo = Photo.where({:id => like.photo_id}).at(0) 
+      owner = User.where({:id => photo.owner_id}).at(0)%>
+        <tr>
+          <td>
+            <img src=<%=photo.image%>>
+          </td>
+          <td>
+            <%= owner.username%>
+          </td>
+          <td>
+            <%= photo.caption%>
+          </td>
+          <td>
+            <%= time_ago_in_words(photo.created_at) %> ago
+          </td>
+          <td>
+            <%=photo.likes_count%>
+          </td>
+          <td>
+            <a href="/photos/<%= photo.id%>">
+              Show details
+            </a>
+          </td>
+        </tr>
+        
+        
+    <% end %>
+    <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

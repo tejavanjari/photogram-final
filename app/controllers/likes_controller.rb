@@ -20,9 +20,7 @@ class LikesController < ApplicationController
   def create
     the_like = Like.new
     the_like.photo_id = params.fetch("query_photo_id")
-    the_like.FK = params.fetch("query_FK")
     the_like.fan_id = params.fetch("query_fan_id")
-    the_like.FK = params.fetch("query_FK")
 
     if the_like.valid?
       the_like.save
@@ -37,9 +35,7 @@ class LikesController < ApplicationController
     the_like = Like.where({ :id => the_id }).at(0)
 
     the_like.photo_id = params.fetch("query_photo_id")
-    the_like.FK = params.fetch("query_FK")
     the_like.fan_id = params.fetch("query_fan_id")
-    the_like.FK = params.fetch("query_FK")
 
     if the_like.valid?
       the_like.save

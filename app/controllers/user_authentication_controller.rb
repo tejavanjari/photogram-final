@@ -38,9 +38,9 @@ class UserAuthenticationController < ApplicationController
 
   def create
     @user = User.new
-    @user.comments_count = params.fetch("query_comments_count")
+    @user.comments_count = 0
     @user.email = params.fetch("query_email")
-    @user.likes_count = params.fetch("query_likes_count")
+    @user.likes_count = 0
     @user.password = params.fetch("query_password")
     @user.password_confirmation = params.fetch("query_password_confirmation")
     @user.private = params.fetch("query_private", false)

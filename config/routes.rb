@@ -7,6 +7,14 @@ Rails.application.routes.draw do
   get("/users", {:controller => "users", :action => "index"})
 
   get("/users/:username", {:controller => "users", :action => "show"})
+
+  get("/users/:username/feed", {:controller => "users", :action => "show_feed"})
+
+  get("/users/:username/liked_photos", {:controller => "users", :action => "liked"})
+
+  get("/users/:username/discover", {:controller => "users", :action => "discovery"})
+
+
   # SIGN UP FORM
   get("/user_sign_up", { :controller => "user_authentication", :action => "sign_up_form" })        
   # CREATE RECORD
